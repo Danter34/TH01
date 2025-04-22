@@ -1,31 +1,30 @@
 ﻿
+using TH01.Data;
 using TH01.Models.Interface;
 
 namespace TH01.Models.Services
 {
     public class ProductRepository : IProductRepository
     {
-        //ở đây ta tạo mảng dữ liệu để truy xuất vì chưa có database để lấy dữ liệu 
-        private List<Product> ProductsList = new List<Product>()
-            {
-new Product{ Id = 1, Name = "America", Price= 25, Detail="Name product",
-ImageUrl="https://index.com"},
-new Product{ Id = 2, Name = "Vietnam", Price= 20, Detail="Vietnamese product",
-ImageUrl="https://index.com"},
-new Product{ Id = 3, Name = "United Kingdom", Price= 15, Detail="Name product",
-ImageUrl="https://index.com"}
-};
+        private CoffeeshopDbContext dbContext;
+        public ProductRepository(CoffeeshopDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         public IEnumerable<Product> GetAllProducts()
         {
-            return ProductsList;
+            return dbContext.Products;
         }
-        public Product GetProductDetail(int id)
+
+        public Product? GetProductDetail(int id)
         {
-            return ProductsList.FirstOrDefault(p => p.Id == id);
+            return dbContext.Products.FirstOrDefault(p => p.Id == id);
         }
+
         public IEnumerable<Product> GetTrendingProducts()
         {
-            return ProductsList.Where(p => p.IsTrendingProduct);
+            return dbContext.Products.Where(p => p.IsTrendingProduct);
         }
     }
 } 

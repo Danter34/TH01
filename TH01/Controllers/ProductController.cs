@@ -10,7 +10,7 @@ namespace TH01.Controllers
         {
             this.productRepository = productRepository;
         }
-        public ActionResult Shop() 
+        public IActionResult Shop() 
         {
             return View(productRepository.GetAllProducts());
         }
