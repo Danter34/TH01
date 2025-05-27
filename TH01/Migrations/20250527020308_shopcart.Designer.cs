@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TH01.Data;
 
@@ -11,9 +12,11 @@ using TH01.Data;
 namespace TH01.Migrations
 {
     [DbContext(typeof(CoffeeshopDbContext))]
-    partial class CoffeeshopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527020308_shopcart")]
+    partial class shopcart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

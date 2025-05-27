@@ -9,6 +9,7 @@ namespace TH01.Data
         {
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ShopingcartItem> ShoppingCartItems { get; set; }
         //seed data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
