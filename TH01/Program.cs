@@ -13,6 +13,7 @@ builder.Services.AddDbContext<CoffeeshopDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>(ShoppingCartRepository.GetCart);
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 //sesion
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
