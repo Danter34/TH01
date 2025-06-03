@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TH01.Models;
 
 namespace TH01.Data
 {
-    public class CoffeeshopDbContext:DbContext
+    public class CoffeeshopDbContext: IdentityDbContext
     {
         public CoffeeshopDbContext(DbContextOptions<CoffeeshopDbContext> options) :base(options)
         {

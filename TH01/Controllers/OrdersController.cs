@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TH01.Models.Interface;
 using TH01.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TH01.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private IOrderRepository orderRepository;
