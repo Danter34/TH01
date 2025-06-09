@@ -101,7 +101,6 @@ namespace TH01.Models.Services
                     dbContext.ShoppingCartItems.Remove(shoppingCartItem);
                 }
             }
-
             dbContext.SaveChanges();
             return quantity;
         }

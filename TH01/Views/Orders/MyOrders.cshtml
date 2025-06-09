@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TH01.Models.Order> 
+
+@{
+    ViewData["Title"] = "Lịch sử đơn hàng của bạn";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">List your orders</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info text-center" role="alert">
+            Bạn chưa có đơn hàng nào.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>STT</th>
+                        <th>Thời gian đặt hàng</th>
+                        <th>Chi tiết sản phẩm</th>
+                        <th>Địa chỉ giao hàng</th>
+                        <th>Tổng cộng</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int stt = 0; }
+                    @foreach (var order in Model)
+                    {
+                        stt++;
+                        <tr>
+                            <td>@stt</td>
+                            <td>@order.OrderPlaced.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                            <td>
+                                @if (order.OrderDetails != null && order.OrderDetails.Any())
+                                {
+                                    <ul class="list-unstyled mb-0">
+                                        @foreach (var detail in order.OrderDetails)
+                                        {
+                                            <li style="display:flex;">
+                                                <img style="width:30px; height:30px;" src="@detail.Product.ImageUrl" alt="Alternate Text" />
+                                                @detail.Quantity x @detail.Product?.Name (@detail.Price.ToString("N0"))
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <span>Không có chi tiết sản phẩm</span>
+                                }
+                            </td>
+                            <td>@order.Address</td>
+                            <td> @order.OrderTotal.ToString("N0")</td>
+                            <td>@order.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

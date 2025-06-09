@@ -13,10 +13,13 @@ namespace TH01.Data
         public DbSet<ShopingcartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Contact> ContactMessages { get; set; }
         //seed data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+           
+           
             modelBuilder.Entity<Product>().HasData(
             new Product
             {
